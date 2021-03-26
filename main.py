@@ -1,4 +1,6 @@
+#!/usr/bin/env pybricks-micropython
 # Импорт модулей
+from pybricks.hubs import EV3Brick as brick
 from pybricks.ev3devices import Motor, ColorSensor, UltrasonicSensor
 from pybricks.parameters import Port
 from pybricks.tools import wait
