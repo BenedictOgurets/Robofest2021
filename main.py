@@ -35,3 +35,5 @@ def follow_black_line():
                 robot.stop()
             else:
                 robot.drive(100, -10)
+
+follow_black_line()
