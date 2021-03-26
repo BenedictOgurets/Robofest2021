@@ -36,4 +36,25 @@ def follow_black_line():
             else:
                 robot.drive(100, -10)
 
+# Сканирование штрих-кода
+def barcode():
+    pass
+
+# Путь к первой кормушке
+def first_feeder():
+    pass
+
+# Путь ко второй кормушке
+def second_feeder():
+    pass
+
+# Путь к третьей кормушке
+def third_feeder():
+    pass
+
+# Путь к четвётрой кормушке
+def fourth_feeder():
+    pass
+
+
 follow_black_line()
