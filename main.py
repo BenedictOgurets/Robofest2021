@@ -7,8 +7,8 @@ from pybricks.tools import wait
 from pybricks.robotics import DriveBase
 
 # Инициализация моторов
-left_motor = Motor(Port.D)     # Левый мотор
-right_motor = Motor(Port.A)    # Правый мотор
+left_motor = Motor(Port.D)      # Левый мотор
+right_motor = Motor(Port.A)     # Правый мотор
 up_n_down_motor = Motor(Port.C) # Мотор поднимающий и опускающий захват
 tube_motor = Motor(Port.B)      # Мотор опускающий и поднимающий трубу
 # Инициализация робота
