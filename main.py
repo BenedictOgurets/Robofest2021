@@ -24,18 +24,21 @@ threshold = (BLACK + WHITE) / 2
 DRIVE_SPEED = 100
 
 # Езда по линии
-def follow_black_line():
+def follow_black_line(s):
     n = 0
-    while n != 6:
+    while n != s:
         if right_sensor.color() == Color.WHITE and left_sensor.color() == Color.WHITE:
-                robot.drive(100, 0)
-        elif right_sensor.color() == Color.WHITE and left_sensor.color() == Color.BLACK:
-                robot.drive(100, -50)
-        elif right_sensor.color() == Color.BLACK and left_sensor.color() == Color.BLACK:
-            n += 1
             robot.drive(100, 0)
+        elif right_sensor.color() == Color.WHITE and left_sensor.color() == Color.BLACK:
+            robot.drive(100, -50)
+        elif right_sensor.color() == Color.BLACK and left_sensor.color() == Color.BLACK:
+            robot.drive(100, 0)
+            while right_sensor.color() != Color.WHITE or left_sensor.color() != Color.WHITE:
+                pass
+            n += 1
         elif right_sensor.color() == Color.BLACK and left_sensor.color() == Color.WHITE:
             robot.drive(100, 50)
+    robot.stop()
 
 # Сканирование штрих-кода
 def barcode():
@@ -58,4 +61,7 @@ def fourth_feeder():
     pass
 
 
-follow_black_line()
+up_n_down_motor.run_time(-700, 2100)
+follow_black_line(6)
+left_motor.run_time(360, 1000)
+
