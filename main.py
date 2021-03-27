@@ -1,7 +1,7 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.hubs import EV3Brick as brick
 from pybricks.ev3devices import (Motor, ColorSensor, UltrasonicSensor)
-from pybricks.parameters import Port
+from pybricks.parameters import Port, Color
 from pybricks.tools import wait, StopWatch, DataLog
 from pybricks.robotics import DriveBase
 
@@ -26,16 +26,16 @@ DRIVE_SPEED = 100
 # Езда по линии
 def follow_black_line():
     while True:
-        if right_sensor.reflection() > threshold:
-            if left_sensor.reflection() > threshold:
+        if right_sensor.color() == Color.WHITE:
+            if left_sensor.color() == Color.WHITE:
                 robot.drive(100, 0)
-            else:
-                robot.drive(100, 10)
-        else:
-            if left_sensor.reflection() <= threshold:
-                robot.stop()
-            else:
-                robot.drive(100, -10)
+            elif left_sensor.color() == Color.BLACK:
+                robot.drive(100, -50)
+        elif right_sensor.color() == Color.BLACK:
+            if left_sensor.color() == Color.BLACK:
+                robot.drive(100, 0)
+            elif left_sensor.color() == Color.WHITE:
+                robot.drive(100, 50)
 
 # Сканирование штрих-кода
 def barcode():
