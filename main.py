@@ -25,17 +25,17 @@ DRIVE_SPEED = 100
 
 # Езда по линии
 def follow_black_line():
-    while True:
-        if right_sensor.color() == Color.WHITE:
-            if left_sensor.color() == Color.WHITE:
+    n = 0
+    while n != 6:
+        if right_sensor.color() == Color.WHITE and left_sensor.color() == Color.WHITE:
                 robot.drive(100, 0)
-            elif left_sensor.color() == Color.BLACK:
+        elif right_sensor.color() == Color.WHITE and left_sensor.color() == Color.BLACK:
                 robot.drive(100, -50)
-        elif right_sensor.color() == Color.BLACK:
-            if left_sensor.color() == Color.BLACK:
-                robot.drive(100, 0)
-            elif left_sensor.color() == Color.WHITE:
-                robot.drive(100, 50)
+        elif right_sensor.color() == Color.BLACK and left_sensor.color() == Color.BLACK:
+            n += 1
+            robot.drive(100, 0)
+        elif right_sensor.color() == Color.BLACK and left_sensor.color() == Color.WHITE:
+            robot.drive(100, 50)
 
 # Сканирование штрих-кода
 def barcode():
